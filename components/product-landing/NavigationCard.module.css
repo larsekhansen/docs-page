@@ -1,0 +1,66 @@
+.navigationCard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid var(--ds-color-border-default);
+  border-radius: var(--ds-border-radius-md);
+}
+
+.navigationCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.navigationCard:focus-visible {
+  outline: 2px solid var(--ds-color-focus-outer);
+  outline-offset: 2px;
+}
+
+.highlighted {
+  border: 2px solid var(--ds-color-accent-base-default);
+  background: var(--ds-color-accent-surface-default);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-size-2);
+  padding: var(--ds-size-4);
+}
+
+.icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--ds-heading-sm-font-size);
+  font-weight: var(--ds-font-weight-semibold);
+}
+
+.cardContent {
+  flex: 1;
+  padding: 0 var(--ds-size-4) var(--ds-size-4);
+}
+
+.description {
+  margin: 0;
+  color: var(--ds-color-text-subtle);
+  font-size: var(--ds-body-md-font-size);
+  line-height: 1.6;
+}
+
+.cardFooter {
+  padding: var(--ds-size-4);
+  padding-top: 0;
+}
+
+.linkText {
+  color: var(--ds-color-accent-text-default);
+  font-weight: var(--ds-font-weight-medium);
+  font-size: var(--ds-body-md-font-size);
+}

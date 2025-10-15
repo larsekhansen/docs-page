@@ -1,0 +1,50 @@
+.productCard {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid var(--ds-color-border-default);
+  border-radius: var(--ds-border-radius-md);
+}
+
+.productCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.productCard:focus-visible {
+  outline: 2px solid var(--ds-color-focus-outer);
+  outline-offset: 2px;
+}
+
+.cardContent {
+  position: relative;
+  padding: var(--ds-size-6);
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  margin: 0 0 var(--ds-size-3) 0;
+  font-size: var(--ds-heading-md-font-size);
+  font-weight: var(--ds-font-weight-semibold);
+  color: var(--ds-color-text-default);
+}
+
+.description {
+  margin: 0;
+  color: var(--ds-color-text-subtle);
+  font-size: var(--ds-body-md-font-size);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.externalBadge {
+  position: absolute;
+  top: var(--ds-size-4);
+  right: var(--ds-size-4);
+  font-size: 1.25rem;
+  color: var(--ds-color-text-subtle);
+}

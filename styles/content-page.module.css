@@ -1,0 +1,88 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--ds-size-8) var(--ds-size-4);
+  min-height: 100vh;
+}
+
+.content {
+  padding: var(--ds-size-6) 0;
+}
+
+.intro {
+  margin-top: var(--ds-size-4);
+  margin-bottom: var(--ds-size-8);
+  color: var(--ds-color-text-subtle);
+}
+
+.section {
+  margin-top: var(--ds-size-10);
+  margin-bottom: var(--ds-size-10);
+}
+
+.section:first-of-type {
+  margin-top: var(--ds-size-6);
+}
+
+.list {
+  margin: var(--ds-size-4) 0;
+  padding-left: var(--ds-size-6);
+  line-height: 1.8;
+}
+
+.list li {
+  margin-bottom: var(--ds-size-2);
+}
+
+.link {
+  color: var(--ds-color-accent-text-default);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.link:hover {
+  text-decoration-thickness: 2px;
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--ds-color-focus-outer);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Grid for Diataxis cards */
+.grid {
+  display: grid;
+  gap: var(--ds-size-5);
+  margin-top: var(--ds-size-6);
+  grid-template-columns: 1fr;
+}
+
+.card {
+  padding: var(--ds-size-5);
+  border: 1px solid var(--ds-color-border-default);
+  border-radius: var(--ds-border-radius-md);
+  background: var(--ds-color-surface-default);
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: var(--ds-size-3);
+}
+
+.card p {
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--ds-size-6);
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: var(--ds-size-10) var(--ds-size-6);
+  }
+}

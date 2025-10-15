@@ -1,0 +1,79 @@
+.featureCard {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 2px solid var(--ds-color-border-default);
+  border-radius: var(--ds-border-radius-lg);
+  background: var(--ds-color-surface-default);
+}
+
+.featureCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  border-color: var(--ds-color-accent-base-default);
+}
+
+.featureCard:focus-visible {
+  outline: 3px solid var(--ds-color-focus-outer);
+  outline-offset: 2px;
+}
+
+.cardContent {
+  position: relative;
+  padding: var(--ds-size-8);
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-4);
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--ds-border-radius-md);
+  background: var(--ds-color-accent-surface-default);
+  margin-bottom: var(--ds-size-2);
+}
+
+.icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--ds-heading-lg-font-size);
+  font-weight: var(--ds-font-weight-semibold);
+  color: var(--ds-color-text-default);
+}
+
+.description {
+  margin: 0;
+  color: var(--ds-color-text-subtle);
+  font-size: var(--ds-body-lg-font-size);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.arrow {
+  align-self: flex-start;
+  font-size: 1.5rem;
+  color: var(--ds-color-accent-text-default);
+  font-weight: var(--ds-font-weight-semibold);
+  transition: transform 0.2s ease;
+}
+
+.featureCard:hover .arrow {
+  transform: translateX(4px);
+}
+
+@media (min-width: 768px) {
+  .cardContent {
+    min-height: 240px;
+  }
+}
