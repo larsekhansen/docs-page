@@ -7,10 +7,16 @@
 
 .hero {
   position: relative;
-  margin-bottom: var(--ds-size-10);
-  text-align: center;
-  padding: var(--ds-size-12) var(--ds-size-4) var(--ds-size-10);
+  width: 100%;
+  padding: var(--ds-size-12) 0 var(--ds-size-10);
   overflow: hidden;
+}
+
+.heroContent {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--ds-size-4);
+  text-align: center;
 }
 
 /* Doczai-style gradient background */
