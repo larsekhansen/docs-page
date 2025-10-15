@@ -1,0 +1,127 @@
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--ds-size-6) var(--ds-size-4);
+  min-height: 100vh;
+}
+
+.hero {
+  margin-bottom: var(--ds-size-10);
+  text-align: center;
+  padding: var(--ds-size-10) 0 var(--ds-size-8);
+}
+
+.title {
+  margin-bottom: var(--ds-size-4);
+}
+
+.description {
+  max-width: 700px;
+  margin: 0 auto;
+  color: var(--ds-color-text-subtle);
+}
+
+/* Feature cards section */
+.features {
+  margin-bottom: var(--ds-size-12);
+}
+
+.featureGrid {
+  display: grid;
+  gap: var(--ds-size-5);
+  grid-template-columns: 1fr;
+}
+
+/* Products section */
+.products {
+  margin-top: var(--ds-size-12);
+}
+
+.sectionTitle {
+  margin-bottom: var(--ds-size-6);
+  text-align: center;
+}
+
+.productGrid {
+  display: grid;
+  gap: var(--ds-size-5);
+  grid-template-columns: 1fr;
+}
+
+.viewAll {
+  margin-top: var(--ds-size-8);
+  text-align: center;
+}
+
+.viewAllLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-size-2);
+  padding: var(--ds-size-3) var(--ds-size-5);
+  font-size: var(--ds-body-lg-font-size);
+  font-weight: var(--ds-font-weight-medium);
+  color: var(--ds-color-accent-text-default);
+  text-decoration: none;
+  border: 2px solid var(--ds-color-accent-base-default);
+  border-radius: var(--ds-border-radius-md);
+  transition: all 0.2s ease;
+}
+
+.viewAllLink:hover {
+  background: var(--ds-color-accent-surface-default);
+  transform: translateY(-2px);
+}
+
+.viewAllLink:focus-visible {
+  outline: 2px solid var(--ds-color-focus-outer);
+  outline-offset: 2px;
+}
+
+/* Small tablets: 2 columns for products, keep 1 for features */
+@media (min-width: 640px) {
+  .productGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--ds-size-6);
+  }
+}
+
+/* Tablets: 2 columns for features, 3 for products */
+@media (min-width: 768px) {
+  .featureGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--ds-size-6);
+  }
+}
+
+/* Medium desktops: 3 columns for features and products */
+@media (min-width: 900px) {
+  .container {
+    padding: var(--ds-size-8) var(--ds-size-6);
+  }
+
+  .featureGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--ds-size-6);
+  }
+
+  .productGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--ds-size-6);
+  }
+}
+
+/* Large desktops: 4 columns for products */
+@media (min-width: 1280px) {
+  .container {
+    padding: var(--ds-size-10) var(--ds-size-8);
+  }
+
+  .featureGrid {
+    gap: var(--ds-size-7);
+  }
+
+  .productGrid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--ds-size-7);
+  }
+}

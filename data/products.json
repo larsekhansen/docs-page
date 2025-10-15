@@ -1,0 +1,78 @@
+{
+  "products": [
+    {
+      "id": "authorization",
+      "title": "Autorisasjon",
+      "shortDescription": "Tilgangsstyring for Altinn-tjenester",
+      "description": "Altinn Autorisasjon er en samling løsninger som gir tilgangsstyring og rettighetsadministrasjon for digitale tjenester.",
+      "url": "/authorization",
+      "sections": [
+        {
+          "type": "explanation",
+          "title": "Om Altinn Autorisasjon",
+          "description": "Lær om konseptene og arkitekturen bak Altinn Autorisasjon",
+          "url": "/authorization/om",
+          "icon": "information"
+        },
+        {
+          "type": "explanation",
+          "title": "Hva får du?",
+          "description": "Oversikt over komponenter og tjenester i Altinn Autorisasjon",
+          "url": "/authorization/features",
+          "icon": "bulb"
+        },
+        {
+          "type": "tutorial",
+          "title": "Kom i gang",
+          "description": "Sett opp og kom i gang med Altinn Autorisasjon",
+          "url": "/authorization/kom-i-gang",
+          "icon": "rocket",
+          "highlighted": true
+        },
+        {
+          "type": "how-to",
+          "title": "Guider",
+          "description": "Steg-for-steg guider for vanlige oppgaver",
+          "url": "/authorization/guider",
+          "icon": "book"
+        },
+        {
+          "type": "reference",
+          "title": "Referanse",
+          "description": "Teknisk dokumentasjon og API-referanse",
+          "url": "/authorization/referanse",
+          "icon": "code"
+        }
+      ]
+    },
+    {
+      "id": "altinn-studio",
+      "title": "Altinn Studio",
+      "shortDescription": "Utviklingsplattform for digitale tjenester",
+      "description": "Altinn Studio er en plattform for å utvikle og publisere digitale tjenester.",
+      "url": "/altinn-studio"
+    },
+    {
+      "id": "altinn-apps",
+      "title": "Altinn Apps",
+      "shortDescription": "Hosting av Altinn-applikasjoner",
+      "description": "Altinn Apps er infrastrukturen som hoster og kjører Altinn-applikasjoner.",
+      "url": "/altinn-apps"
+    },
+    {
+      "id": "tilgangsstyring",
+      "title": "Tilgangsstyring",
+      "shortDescription": "Administrasjon av tilganger og rettigheter",
+      "description": "Verktøy for å administrere tilganger og rettigheter i offentlige digitale tjenester.",
+      "url": "/tilgangsstyring"
+    },
+    {
+      "id": "designsystem",
+      "title": "Designsystemet",
+      "shortDescription": "Norges designsystem",
+      "description": "Gjenbrukbare komponenter og designprinsipper for offentlige digitale tjenester.",
+      "url": "https://designsystemet.no",
+      "external": true
+    }
+  ]
+}
