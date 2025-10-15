@@ -7,6 +7,8 @@
   border-radius: var(--ds-border-radius-md);
   background: var(--ds-color-surface-default);
   box-shadow: var(--ds-shadow-sm);
+  border: none;
+  outline: none;
 }
 
 .productCard:hover {
@@ -15,8 +17,8 @@
 }
 
 .productCard:focus-visible {
-  outline: 2px solid var(--ds-color-focus-outer);
-  outline-offset: 2px;
+  outline: none;
+  box-shadow: var(--ds-shadow-lg);
 }
 
 .cardContent {

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
+import { Search } from '@digdir/designsystemet-react';
 import styles from './Navbar.module.css';
 
 export function Navbar() {
@@ -28,15 +29,10 @@ export function Navbar() {
 
         {/* Desktop Search */}
         <div className={styles.searchWrapper}>
-          <input
-            type="search"
-            placeholder="Søk i dokumentasjonen..."
-            className={styles.searchInput}
-            aria-label="Søk"
-          />
-          <span className={styles.searchIcon} aria-hidden="true">
-            🔍
-          </span>
+          <Search>
+            <Search.Input aria-label="Søk i dokumentasjonen" placeholder="Søk i dokumentasjonen..." />
+            <Search.Clear />
+          </Search>
         </div>
 
         {/* Mobile Menu Button */}
@@ -77,15 +73,10 @@ export function Navbar() {
             Om dokumentasjonen
           </Link>
           <div className={styles.mobileSearch}>
-            <input
-              type="search"
-              placeholder="Søk..."
-              className={styles.searchInput}
-              aria-label="Søk"
-            />
-            <span className={styles.searchIcon} aria-hidden="true">
-              🔍
-            </span>
+            <Search>
+              <Search.Input aria-label="Søk" placeholder="Søk..." />
+              <Search.Clear />
+            </Search>
           </div>
         </div>
       )}
