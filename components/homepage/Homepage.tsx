@@ -10,18 +10,23 @@ interface HomepageProps {
 
 export function Homepage({ products }: HomepageProps) {
   return (
-    <div className={styles.container}>
+    <>
+      {/* Full-width hero section */}
       <header className={styles.hero}>
-        <Heading size="xlarge" level={1} className={styles.title}>
-          Dokumentasjon for Altinn
-        </Heading>
-        <Paragraph size="large" className={styles.description}>
-          Dokumentasjon for produkter og tjenester fra Digitaliseringsdirektoratet
-        </Paragraph>
+        <div className={styles.heroContent}>
+          <Heading data-size="xl" level={1} className={styles.title}>
+            Dokumentasjon for Altinn
+          </Heading>
+          <Paragraph data-size="lg" className={styles.description}>
+            Dokumentasjon for produkter og tjenester fra Digitaliseringsdirektoratet
+          </Paragraph>
+        </div>
       </header>
 
-      {/* Main navigation cards */}
-      <section className={styles.features} aria-label="Hovednavigasjon">
+      {/* Container for remaining content */}
+      <div className={styles.container}>
+        {/* Main navigation cards */}
+        <section className={styles.features} aria-label="Hovednavigasjon">
         <div className={styles.featureGrid}>
           <FeatureCard
             title="Produkter"
@@ -46,7 +51,7 @@ export function Homepage({ products }: HomepageProps) {
 
       {/* Featured products */}
       <section className={styles.products} aria-label="Utvalgte produkter">
-        <Heading size="medium" level={2} className={styles.sectionTitle}>
+        <Heading data-size="md" level={2} className={styles.sectionTitle}>
           Utvalgte produkter
         </Heading>
         <div className={styles.productGrid}>
@@ -62,6 +67,7 @@ export function Homepage({ products }: HomepageProps) {
           </div>
         )}
       </section>
-    </div>
+      </div>
+    </>
   );
 }
