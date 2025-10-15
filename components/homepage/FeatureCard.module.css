@@ -4,15 +4,14 @@
   color: inherit;
   height: 100%;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border: 2px solid var(--ds-color-border-default);
   border-radius: var(--ds-border-radius-lg);
   background: var(--ds-color-surface-default);
+  box-shadow: var(--ds-shadow-sm);
 }
 
 .featureCard:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-  border-color: var(--ds-color-accent-base-default);
+  box-shadow: var(--ds-shadow-md);
 }
 
 .featureCard:focus-visible {
