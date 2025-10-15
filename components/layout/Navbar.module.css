@@ -81,8 +81,8 @@
 
 .searchInput:focus {
   outline: none;
-  border-color: var(--ds-color-accent-border-default);
-  box-shadow: 0 0 0 2px var(--ds-color-accent-surface-default);
+  border-color: var(--ds-color-border-default);
+  box-shadow: var(--ds-shadow-sm);
 }
 
 .searchIcon {
