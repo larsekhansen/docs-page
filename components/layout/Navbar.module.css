@@ -2,7 +2,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--ds-color-surface-default);
+  background: var(--surface-base);
 }
 
 .container {
