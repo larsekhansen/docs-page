@@ -11,10 +11,10 @@ export function ProductLandingPage({ product }: ProductLandingPageProps) {
   return (
     <div className={styles.container}>
       <header className={styles.hero}>
-        <Heading size="xlarge" level={1} className={styles.title}>
+        <Heading data-size="xl" level={1} className={styles.title}>
           {product.title}
         </Heading>
-        <Paragraph size="large" className={styles.description}>
+        <Paragraph data-size="lg" className={styles.description}>
           {product.description}
         </Paragraph>
       </header>

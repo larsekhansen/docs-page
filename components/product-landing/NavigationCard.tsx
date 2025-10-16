@@ -1,4 +1,4 @@
-import { Button, Card } from '@digdir/designsystemet-react';
+import { Card } from '@digdir/designsystemet-react';
 import Link from 'next/link';
 import { ProductSection } from '@/types/product';
 import styles from './NavigationCard.module.css';
@@ -33,7 +33,6 @@ export function NavigationCard({ section }: NavigationCardProps) {
           </span>
         </Card.Block>
       </Link>
-      <Button> hello world</Button>
     </Card>
   );
 }
