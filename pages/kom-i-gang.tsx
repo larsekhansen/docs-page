@@ -18,17 +18,17 @@ export default function KomIGangPage() {
         </a>
 
         <div className={styles.content}>
-          <Heading size="xlarge" level={1}>
+          <Heading data-size="xl" level={1}>
             Kom i gang med Altinn
           </Heading>
 
-          <Paragraph size="large" className={styles.intro}>
+          <Paragraph data-size="lg" className={styles.intro}>
             Velkommen til Altinn! Her finner du ressurser for å komme i gang med
             våre produkter og tjenester.
           </Paragraph>
 
           <section className={styles.section}>
-            <Heading size="large" level={2}>
+            <Heading data-size="lg" level={2}>
               Ny til Altinn?
             </Heading>
             <Paragraph>
@@ -39,7 +39,7 @@ export default function KomIGangPage() {
           </section>
 
           <section className={styles.section}>
-            <Heading size="large" level={2}>
+            <Heading data-size="lg" level={2}>
               Vanlige bruksscenarier
             </Heading>
             <Paragraph>
@@ -54,7 +54,7 @@ export default function KomIGangPage() {
           </section>
 
           <section className={styles.section}>
-            <Heading size="large" level={2}>
+            <Heading data-size="lg" level={2}>
               Neste steg
             </Heading>
             <Paragraph>

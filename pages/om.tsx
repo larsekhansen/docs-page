@@ -18,17 +18,17 @@ export default function OmPage() {
         </a>
 
         <div className={styles.content}>
-          <Heading size="xlarge" level={1}>
+          <Heading data-size="xl" level={1}>
             Om dokumentasjonen
           </Heading>
 
-          <Paragraph size="large" className={styles.intro}>
+          <Paragraph data-size="lg" className={styles.intro}>
             Denne dokumentasjonsportalen er bygget med brukeren i fokus, ved hjelp
             av etablerte rammeverk for dokumentasjon.
           </Paragraph>
 
           <section className={styles.section}>
-            <Heading size="large" level={2}>
+            <Heading data-size="lg" level={2}>
               Diataxis-rammeverket
             </Heading>
             <Paragraph>
@@ -47,7 +47,7 @@ export default function OmPage() {
 
             <div className={styles.grid}>
               <div className={styles.card}>
-                <Heading size="small" level={3}>
+                <Heading data-size="sm" level={3}>
                   📖 Explanation (Forklaring)
                 </Heading>
                 <Paragraph>
@@ -57,7 +57,7 @@ export default function OmPage() {
               </div>
 
               <div className={styles.card}>
-                <Heading size="small" level={3}>
+                <Heading data-size="sm" level={3}>
                   🚀 Tutorial (Opplæring)
                 </Heading>
                 <Paragraph>
@@ -67,7 +67,7 @@ export default function OmPage() {
               </div>
 
               <div className={styles.card}>
-                <Heading size="small" level={3}>
+                <Heading data-size="sm" level={3}>
                   📚 How-to (Veiledning)
                 </Heading>
                 <Paragraph>
@@ -77,7 +77,7 @@ export default function OmPage() {
               </div>
 
               <div className={styles.card}>
-                <Heading size="small" level={3}>
+                <Heading data-size="sm" level={3}>
                   📑 Reference (Referanse)
                 </Heading>
                 <Paragraph>
@@ -89,7 +89,7 @@ export default function OmPage() {
           </section>
 
           <section className={styles.section}>
-            <Heading size="large" level={2}>
+            <Heading data-size="lg" level={2}>
               Jobs to be Done (JTBD)
             </Heading>
             <Paragraph>
@@ -115,7 +115,7 @@ export default function OmPage() {
           </section>
 
           <section className={styles.section}>
-            <Heading size="large" level={2}>
+            <Heading data-size="lg" level={2}>
               Designsystemet
             </Heading>
             <Paragraph>
@@ -134,7 +134,7 @@ export default function OmPage() {
           </section>
 
           <section className={styles.section}>
-            <Heading size="large" level={2}>
+            <Heading data-size="lg" level={2}>
               Tilgjengelighet
             </Heading>
             <Paragraph>

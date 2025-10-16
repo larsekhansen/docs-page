@@ -23,10 +23,10 @@ export default function ProdukterPage() {
         </a>
 
         <header className={styles.hero}>
-          <Heading size="xlarge" level={1}>
+          <Heading data-size="xl" level={1}>
             Produkter og tjenester
           </Heading>
-          <Paragraph size="large" className={styles.description}>
+          <Paragraph data-size="lg" className={styles.description}>
             Utforsk dokumentasjonen for Altinn-produktene. Velg et produkt for å
             se detaljert dokumentasjon, guider og API-referanser.
           </Paragraph>
