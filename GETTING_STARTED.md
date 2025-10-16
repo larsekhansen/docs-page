@@ -66,7 +66,7 @@ altinn-docs/
   - Produkter → `/produkter`
   - Kom i gang → `/kom-i-gang`
   - Om dokumentasjonen → `/om`
-- Utvalgte produkter (viser første 4)
+- Utvalgte produkter (viser første 3)
 - "Se alle produkter"-lenke
 
 ### 2. **Produktoversikt** (`/produkter`)

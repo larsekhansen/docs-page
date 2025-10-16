@@ -87,7 +87,7 @@ Forside
 │   ├── Produkter
 │   ├── Kom i gang
 │   └── Om dokumentasjonen
-└── Utvalgte produkter (4 første)
+└── Utvalgte produkter (3 første)
 ```
 
 ### Teknisk stack
