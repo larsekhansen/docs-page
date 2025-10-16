@@ -55,11 +55,11 @@ export function Homepage({ products }: HomepageProps) {
           Utvalgte produkter
         </Heading>
         <div className={styles.productGrid}>
-          {products.slice(0, 4).map((product) => (
+          {products.slice(0, 3).map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
-        {products.length > 4 && (
+        {products.length > 3 && (
           <div className={styles.viewAll}>
             <a href="/produkter" className={styles.viewAllLink}>
               Se alle produkter →
