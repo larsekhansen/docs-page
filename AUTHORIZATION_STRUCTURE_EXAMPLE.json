@@ -1,0 +1,259 @@
+{
+  "products": [
+    {
+      "id": "systembruker",
+      "title": "Systembruker",
+      "shortDescription": "API-tilgang for systemer og applikasjoner",
+      "description": "Systembruker gir automatiserte systemer tilgang til Altinn-tjenester uten brukerinteraksjon. Ideelt for integrasjoner, batch-jobber og API-klienter.",
+      "url": "/systembruker",
+      "category": "authorization",
+      "sections": [
+        {
+          "type": "explanation",
+          "title": "Om Systembruker",
+          "description": "Lær om konseptene og arkitekturen bak systembruker",
+          "url": "/systembruker/om",
+          "icon": "information"
+        },
+        {
+          "type": "tutorial",
+          "title": "Kom i gang",
+          "description": "Onboarding-guide for SBSL og TE",
+          "url": "/systembruker/kom-i-gang",
+          "icon": "rocket",
+          "highlighted": true,
+          "subsections": [
+            {
+              "title": "Opprett systembruker",
+              "url": "/systembruker/kom-i-gang/opprett"
+            },
+            {
+              "title": "Konfigurer autentisering",
+              "url": "/systembruker/kom-i-gang/autentisering"
+            },
+            {
+              "title": "Første API-kall",
+              "url": "/systembruker/kom-i-gang/forste-kall"
+            }
+          ]
+        },
+        {
+          "type": "how-to",
+          "title": "Guider",
+          "description": "Steg-for-steg guider for vanlige oppgaver",
+          "url": "/systembruker/guider",
+          "icon": "book",
+          "subsections": [
+            {
+              "title": "Gi API-tilgang",
+              "url": "/systembruker/guider/gi-tilgang"
+            },
+            {
+              "title": "Administrere rettigheter",
+              "url": "/systembruker/guider/rettigheter"
+            },
+            {
+              "title": "Rotere API-nøkler",
+              "url": "/systembruker/guider/rotere-nokler"
+            },
+            {
+              "title": "Slette systembruker",
+              "url": "/systembruker/guider/slette"
+            }
+          ]
+        },
+        {
+          "type": "reference",
+          "title": "API Reference",
+          "description": "Teknisk API-dokumentasjon",
+          "url": "/systembruker/api",
+          "icon": "code",
+          "subsections": [
+            {
+              "title": "Autentisering",
+              "url": "/systembruker/api/autentisering"
+            },
+            {
+              "title": "Endpoints",
+              "url": "/systembruker/api/endpoints"
+            },
+            {
+              "title": "Feilkoder",
+              "url": "/systembruker/api/feilkoder"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "access-management",
+      "title": "Tilgangsstyring",
+      "shortDescription": "Administrasjon av tilganger og rettigheter",
+      "description": "Tilgangsstyring lar deg kontrollere hvem som har tilgang til hva i Altinn-tjenester.",
+      "url": "/tilgangsstyring",
+      "category": "authorization",
+      "sections": [
+        {
+          "type": "explanation",
+          "title": "Om Tilgangsstyring",
+          "description": "Forstå hvordan tilgangsstyring fungerer",
+          "url": "/tilgangsstyring/om",
+          "icon": "information"
+        },
+        {
+          "type": "tutorial",
+          "title": "Kom i gang",
+          "description": "Sett opp tilgangsstyring",
+          "url": "/tilgangsstyring/kom-i-gang",
+          "icon": "rocket",
+          "highlighted": true
+        },
+        {
+          "type": "how-to",
+          "title": "Guider",
+          "description": "Administrere tilganger",
+          "url": "/tilgangsstyring/guider",
+          "icon": "book",
+          "subsections": [
+            {
+              "title": "Gi tilgang til bruker",
+              "url": "/tilgangsstyring/guider/gi-tilgang"
+            },
+            {
+              "title": "Trekke tilgang",
+              "url": "/tilgangsstyring/guider/trekke-tilgang"
+            },
+            {
+              "title": "Administrere grupper",
+              "url": "/tilgangsstyring/guider/grupper"
+            }
+          ]
+        },
+        {
+          "type": "reference",
+          "title": "Reference",
+          "description": "Teknisk dokumentasjon",
+          "url": "/tilgangsstyring/referanse",
+          "icon": "code"
+        }
+      ]
+    },
+    {
+      "id": "rettighetsregister",
+      "title": "Rettighetsregister",
+      "shortDescription": "Register over rettigheter og roller",
+      "description": "Rettighetsregisteret inneholder alle rettigheter, roller og regler i Altinn.",
+      "url": "/rettighetsregister",
+      "category": "authorization",
+      "sections": [
+        {
+          "type": "explanation",
+          "title": "Konsepter",
+          "description": "Forstå rettighetsmodellen",
+          "url": "/rettighetsregister/konsepter",
+          "icon": "information"
+        },
+        {
+          "type": "tutorial",
+          "title": "Kom i gang",
+          "description": "Bruk rettighetsregisteret",
+          "url": "/rettighetsregister/kom-i-gang",
+          "icon": "rocket",
+          "highlighted": true
+        },
+        {
+          "type": "how-to",
+          "title": "Guider",
+          "description": "Oppgavebaserte guider",
+          "url": "/rettighetsregister/guider",
+          "icon": "book"
+        },
+        {
+          "type": "reference",
+          "title": "Reference",
+          "description": "Rettighets-API",
+          "url": "/rettighetsregister/api",
+          "icon": "code"
+        }
+      ]
+    },
+    {
+      "id": "delegering",
+      "title": "Delegering",
+      "shortDescription": "Videregir rettigheter til andre",
+      "description": "Delegeringsfunksjonalitet lar brukere gi sine rettigheter videre til andre personer eller systemer.",
+      "url": "/delegering",
+      "category": "authorization",
+      "sections": [
+        {
+          "type": "explanation",
+          "title": "Om Delegering",
+          "description": "Hvordan delegering fungerer",
+          "url": "/delegering/om",
+          "icon": "information"
+        },
+        {
+          "type": "tutorial",
+          "title": "Kom i gang",
+          "description": "Start med delegering",
+          "url": "/delegering/kom-i-gang",
+          "icon": "rocket",
+          "highlighted": true
+        },
+        {
+          "type": "how-to",
+          "title": "Guider",
+          "description": "Delegere rettigheter",
+          "url": "/delegering/guider",
+          "icon": "book"
+        },
+        {
+          "type": "reference",
+          "title": "Reference",
+          "description": "API-dokumentasjon",
+          "url": "/delegering/api",
+          "icon": "code"
+        }
+      ]
+    },
+    {
+      "id": "samtykke",
+      "title": "Samtykke",
+      "shortDescription": "Håndter brukersamtykker",
+      "description": "Samtykke-løsningen lar brukere gi og trekke samtykke til datadeling mellom tjenester.",
+      "url": "/samtykke",
+      "category": "authorization",
+      "sections": [
+        {
+          "type": "explanation",
+          "title": "Om Samtykke",
+          "description": "Forstå samtykkemodellen",
+          "url": "/samtykke/om",
+          "icon": "information"
+        },
+        {
+          "type": "tutorial",
+          "title": "Kom i gang",
+          "description": "Implementer samtykke",
+          "url": "/samtykke/kom-i-gang",
+          "icon": "rocket",
+          "highlighted": true
+        },
+        {
+          "type": "how-to",
+          "title": "Guider",
+          "description": "Jobbe med samtykker",
+          "url": "/samtykke/guider",
+          "icon": "book"
+        },
+        {
+          "type": "reference",
+          "title": "Reference",
+          "description": "Samtykke-API",
+          "url": "/samtykke/api",
+          "icon": "code"
+        }
+      ]
+    }
+  ]
+}

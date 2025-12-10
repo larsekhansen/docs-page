@@ -1,0 +1,29 @@
+.productLayout {
+  display: flex;
+  min-height: calc(100vh - 64px); /* Full height minus navbar */
+  background: var(--surface-base);
+}
+
+.content {
+  flex: 1;
+  max-width: 1200px;
+  padding: var(--ds-size-8) var(--ds-size-6);
+  overflow-x: hidden;
+}
+
+/* Ensure good reading width */
+.content > * {
+  max-width: 800px;
+}
+
+/* Mobile: Full width content, no sidebar */
+@media (max-width: 768px) {
+  .productLayout {
+    flex-direction: column;
+  }
+
+  .content {
+    padding: var(--ds-size-4);
+    max-width: 100%;
+  }
+}
