@@ -73,6 +73,139 @@
       "description": "Gjenbrukbare komponenter og designprinsipper for offentlige digitale tjenester.",
       "url": "https://designsystemet.no",
       "external": true
+    },
+    {
+      "id": "melding",
+      "title": "Melding og Formidling",
+      "shortDescription": "Sikker digital kommunikasjon og filoverføring",
+      "description": "Altinn Melding gjør det mulig for offentlige virksomheter å sende sikre meldinger til innbyggere og næringsliv. Altinn Formidling håndterer overføring av store filer mellom avsender og mottakere.",
+      "url": "/melding",
+      "sections": [
+        {
+          "type": "explanation",
+          "title": "Om Melding og Formidling",
+          "description": "Lær om konseptene bak sikker meldingsutveksling og filoverføring i Altinn",
+          "url": "/melding/om",
+          "icon": "information"
+        },
+        {
+          "type": "explanation",
+          "title": "Altinn Melding (Correspondence)",
+          "description": "Sikker utveksling av korrespondanse, varsler og dokumenter med 76M+ meldinger årlig",
+          "url": "/melding/correspondence",
+          "icon": "email"
+        },
+        {
+          "type": "explanation",
+          "title": "Altinn Formidling",
+          "description": "Overføring av store filer via web services eller SFTP",
+          "url": "/melding/formidling",
+          "icon": "file"
+        },
+        {
+          "type": "tutorial",
+          "title": "Kom i gang med Melding",
+          "description": "Send din første melding i Altinn 3",
+          "url": "/melding/kom-i-gang",
+          "icon": "rocket",
+          "highlighted": true,
+          "subsections": [
+            {
+              "title": "Opprett første melding",
+              "url": "/melding/kom-i-gang/opprett-melding"
+            },
+            {
+              "title": "Konfigurer varsling",
+              "url": "/melding/kom-i-gang/varsling"
+            },
+            {
+              "title": "Test i testmiljø",
+              "url": "/melding/kom-i-gang/test"
+            }
+          ]
+        },
+        {
+          "type": "tutorial",
+          "title": "Kom i gang med Formidling",
+          "description": "Sett opp filoverføring i Altinn",
+          "url": "/melding/formidling/kom-i-gang",
+          "icon": "rocket"
+        },
+        {
+          "type": "how-to",
+          "title": "Migrering til Altinn 3",
+          "description": "Veiledning for migrering fra Altinn 2 (deadline juni 2026)",
+          "url": "/melding/migrering",
+          "icon": "arrow-forward",
+          "subsections": [
+            {
+              "title": "Migreringsplan",
+              "url": "/melding/migrering/plan"
+            },
+            {
+              "title": "API-endringer",
+              "url": "/melding/migrering/api-endringer"
+            },
+            {
+              "title": "Testing av migrering",
+              "url": "/melding/migrering/testing"
+            }
+          ]
+        },
+        {
+          "type": "how-to",
+          "title": "Guider",
+          "description": "Steg-for-steg guider for vanlige oppgaver",
+          "url": "/melding/guider",
+          "icon": "book",
+          "subsections": [
+            {
+              "title": "Sende melding med vedlegg",
+              "url": "/melding/guider/vedlegg"
+            },
+            {
+              "title": "Håndtere sikkerhetsnivåer",
+              "url": "/melding/guider/sikkerhetsnivaa"
+            },
+            {
+              "title": "Sette opp varsling (e-post/SMS)",
+              "url": "/melding/guider/varsling"
+            },
+            {
+              "title": "Overføre store filer",
+              "url": "/melding/guider/store-filer"
+            }
+          ]
+        },
+        {
+          "type": "reference",
+          "title": "API-referanse Altinn 3",
+          "description": "REST API dokumentasjon for Altinn 3",
+          "url": "/melding/api/v3",
+          "icon": "code",
+          "subsections": [
+            {
+              "title": "Autentisering",
+              "url": "/melding/api/v3/auth"
+            },
+            {
+              "title": "Endpoints",
+              "url": "/melding/api/v3/endpoints"
+            },
+            {
+              "title": "Feilkoder",
+              "url": "/melding/api/v3/errors"
+            }
+          ]
+        },
+        {
+          "type": "reference",
+          "title": "API-referanse Altinn 2 (Legacy)",
+          "description": "Web services og SFTP dokumentasjon for Altinn 2",
+          "url": "/melding/api/v2",
+          "icon": "code"
+        }
+      ]
     }
   ]
 }

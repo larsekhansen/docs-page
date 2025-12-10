@@ -1,5 +1,10 @@
 export type DiataxisType = 'explanation' | 'tutorial' | 'how-to' | 'reference';
 
+export interface ProductSubsection {
+  title: string;
+  url: string;
+}
+
 export interface ProductSection {
   type: DiataxisType;
   title: string;
@@ -7,6 +12,7 @@ export interface ProductSection {
   url: string;
   icon?: string;
   highlighted?: boolean;
+  subsections?: ProductSubsection[];
 }
 
 export interface Product {
