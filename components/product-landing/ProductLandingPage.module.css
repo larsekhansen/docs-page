@@ -26,29 +26,27 @@
 .cardGrid {
   display: grid;
   gap: var(--ds-size-4);
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
-/* Tablet: 2 columns */
+/* Tablet: adjust spacing */
 @media (min-width: 768px) {
   .container {
     padding: var(--ds-size-8) var(--ds-size-6);
   }
 
   .cardGrid {
-    grid-template-columns: repeat(2, 1fr);
     gap: var(--ds-size-5);
   }
 }
 
-/* Desktop: 3 columns */
+/* Desktop: adjust spacing */
 @media (min-width: 1024px) {
   .container {
     padding: var(--ds-size-10) var(--ds-size-8);
   }
 
   .cardGrid {
-    grid-template-columns: repeat(3, 1fr);
     gap: var(--ds-size-6);
   }
 }
