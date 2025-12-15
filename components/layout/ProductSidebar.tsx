@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Product, ProductSection } from '@/types/product';
+import { Product } from '@/types/product';
 import styles from './ProductSidebar.module.css';
 
 interface ProductSidebarProps {
@@ -10,18 +10,35 @@ interface ProductSidebarProps {
 
 export function ProductSidebar({ product }: ProductSidebarProps) {
   const router = useRouter();
-  const [expandedSections, setExpandedSections] = useState<string[]>([]);
+  const [expandedSections, setExpandedSections] = useState<string[]>(() => {
+    const path = router.asPath.split('#')[0].split('?')[0].replace(/\/$/, '') || '/';
+    const normalize = (url: string) => url.split('#')[0].split('?')[0].replace(/\/$/, '') || '/';
+
+    const active = product.sections?.find((s) => {
+      const target = normalize(s.url);
+      return path === target || path.startsWith(`${target}/`);
+    });
+
+    return active ? [active.title] : [];
+  });
+
+  const currentPath = router.asPath.split('#')[0].split('?')[0].replace(/\/$/, '') || '/';
+
+  const normalize = (url: string) => url.split('#')[0].split('?')[0].replace(/\/$/, '') || '/';
 
   const toggleSection = (sectionTitle: string) => {
-    setExpandedSections((prev) =>
+    setExpandedSections((prev: string[]) =>
       prev.includes(sectionTitle)
-        ? prev.filter((t) => t !== sectionTitle)
+        ? prev.filter((t: string) => t !== sectionTitle)
         : [...prev, sectionTitle]
     );
   };
 
-  const isActive = (url: string) => {
-    return router.asPath === url;
+  const isActive = (url: string) => currentPath === normalize(url);
+
+  const isActiveOrChild = (url: string) => {
+    const target = normalize(url);
+    return currentPath === target || currentPath.startsWith(`${target}/`);
   };
 
   const getIconForType = (type: string) => {
@@ -66,7 +83,7 @@ export function ProductSidebar({ product }: ProductSidebarProps) {
               <Link
                 href={section.url}
                 className={`${styles.navLink} ${
-                  isActive(section.url) ? styles.active : ''
+                  isActiveOrChild(section.url) ? styles.active : ''
                 } ${section.highlighted ? styles.highlighted : ''}`}
               >
                 <span className={styles.icon}>
