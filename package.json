@@ -13,9 +13,17 @@
     "@digdir/designsystemet-react": "^1.6.1",
     "@digdir/designsystemet-theme": "^1.6.1",
     "@digdir/designsystemet-css": "^1.6.1",
+    "@mdx-js/react": "^3.0.1",
+    "github-slugger": "^2.0.0",
+    "gray-matter": "^4.0.3",
     "next": "^14.0.0",
+    "next-mdx-remote": "^5.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-slug": "^6.0.0",
+    "remark-gfm": "^4.0.0",
+    "remark-slug": "^8.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
