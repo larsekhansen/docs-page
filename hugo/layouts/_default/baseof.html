@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="nb">
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Hopp til hovedinnhold</a>
+
+    {{ partial "header.html" . }}
+
+    <main id="main-content" class="page">
+      {{ block "main" . }}{{ end }}
+    </main>
+  </body>
+</html>
