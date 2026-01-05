@@ -11,21 +11,21 @@
           "type": "explanation",
           "title": "Om Altinn Autorisasjon",
           "description": "Lær om konseptene og arkitekturen bak Altinn Autorisasjon",
-          "url": "/authorization/om",
+          "url": "/authorization/about",
           "icon": "information"
         },
         {
           "type": "explanation",
           "title": "Hva får du?",
           "description": "Oversikt over komponenter og tjenester i Altinn Autorisasjon",
-          "url": "/authorization/features",
+          "url": "/authorization/what-do-you-get",
           "icon": "bulb"
         },
         {
           "type": "tutorial",
           "title": "Kom i gang",
           "description": "Sett opp og kom i gang med Altinn Autorisasjon",
-          "url": "/authorization/kom-i-gang",
+          "url": "/authorization/getting-started",
           "icon": "rocket",
           "highlighted": true
         },
@@ -33,15 +33,22 @@
           "type": "how-to",
           "title": "Guider",
           "description": "Steg-for-steg guider for vanlige oppgaver",
-          "url": "/authorization/guider",
+          "url": "/authorization/guides",
           "icon": "book"
         },
         {
           "type": "reference",
           "title": "Referanse",
           "description": "Teknisk dokumentasjon og API-referanse",
-          "url": "/authorization/referanse",
+          "url": "/authorization/reference",
           "icon": "code"
+        },
+        {
+          "type": "how-to",
+          "title": "Fremdriftsplan",
+          "description": "Plan for modernisering og migrering fra Altinn 2 til Altinn 3",
+          "url": "/authorization/migration",
+          "icon": "arrow-forward"
         }
       ]
     },
