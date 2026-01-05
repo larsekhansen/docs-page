@@ -1,0 +1,21 @@
+{{ define "main" }}
+  <div class="home">
+    <header class="page-header">
+      <h1 class="ds-heading ds-heading--lg">{{ .Site.Title }}</h1>
+      <p class="ds-paragraph">Produktdokumentasjon</p>
+    </header>
+
+    <div class="card-grid">
+      {{ range .Site.Sections.ByTitle }}
+        <a class="ds-card card" href="{{ .RelPermalink }}">
+          <div class="ds-card__content">
+            <h2 class="ds-heading ds-heading--md">{{ .Title }}</h2>
+            {{ with .Params.description }}
+              <p class="ds-paragraph">{{ . }}</p>
+            {{ end }}
+          </div>
+        </a>
+      {{ end }}
+    </div>
+  </div>
+{{ end }}

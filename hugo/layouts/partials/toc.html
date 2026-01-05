@@ -1,0 +1,9 @@
+{{ if .IsPage }}
+  {{ $toc := .TableOfContents }}
+  {{ if and $toc (ne $toc "") }}
+    <nav class="toc" aria-label="Innhold på siden">
+      <div class="toc__title">På denne siden</div>
+      <div class="toc__content">{{ $toc | safeHTML }}</div>
+    </nav>
+  {{ end }}
+{{ end }}

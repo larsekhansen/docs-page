@@ -1,0 +1,24 @@
+{{ define "main" }}
+  <div class="layout">
+    <aside class="layout__sidebar">
+      {{ partial "sidebar.html" . }}
+    </aside>
+
+    <article class="layout__content">
+      <header class="page-header">
+        <h1 class="ds-heading ds-heading--lg">{{ .Title }}</h1>
+        {{ with .Params.description }}
+          <p class="ds-paragraph">{{ . }}</p>
+        {{ end }}
+      </header>
+
+      <div class="prose">
+        {{ .Content }}
+      </div>
+    </article>
+
+    <aside class="layout__toc">
+      {{ partial "toc.html" . }}
+    </aside>
+  </div>
+{{ end }}
