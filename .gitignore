@@ -10,6 +10,11 @@ node_modules/
 /.next/
 /out/
 
+# Hugo
+/hugo/public/
+/hugo/resources/
+/hugo/.hugo_build.lock
+
 # Production
 /build
 /dist
