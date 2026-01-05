@@ -1,0 +1,53 @@
+---
+title: Systembruker
+description: Systembruker er en ny standard for tilgangsstyring ved utveksling av data mellom sluttbruker, sluttbrukersystem og offentlig sektor.
+weight: 20
+---
+
+En stor del av kommunikasjonen mellom det offentlige og næringslivet skjer via API i Altinn og hos andre plattformleverandører i det offentlige. Mye av denne kommunikasjonen skjer på vegne av virksomheten og trenger ikke utføres av en spesifikk person.
+
+Systembruker gjør det enkelt å opprette en bruker, som gis nødvendige fullmakter i forhold til oppgavene den skal utføre.
+
+Systembruker bygger videre på Maskinporten, som gir sikker autentisering og grovkornet tilgangsstyring, og utvider dette med finkornet tilgangsstyring.
+
+Systembruker gjør det enkelt å sette opp en virtuell bruker som kan operere på vegne av virksomheten, enten som et egenopprettet system eller i et kunde–leverandørforhold.
+Systembruker kan både brukes mot tjenester som kjører i Altinn og mot eksterne tjenester som bruker Altinn Autorisasjon som autorisasjonsløsning.
+
+> Systembruker er ikke ment å erstatte ID-porten eller Maskinporten, men supplere og utvide det man allerede får gjennom disse komponentene.
+>
+> Ved behov for å knytte operasjonene til hvilken person som utfører dem, bruk **ID-porten**.
+>
+> Ved behov for å knytte operasjonene til hvilket system som ligger bak, bruk **Systembruker**.
+>
+> Dersom man kun trenger å vite hvilken virksomhet og eventuelt scope, bruk **Maskinporten**.
+
+For en overordnet funksjonell gjennomgang og brukerreise, se [Samarbeidsportalen](https://samarbeid.digdir.no/altinn/systembruker/2542).
+
+## Egenskaper med systembruker
+
+Systembruker gir en rekke fordeler sammenlignet med dagens virksomhetsbruker og sluttbrukersystemkonsept i Altinn 2.
+
+**For tjenesteeier**
+
+For å støtte systembruker på tjenesten din må du velge Maskinporten som autentiseringsmetode og gjøre oppslag mot vårt autorisasjons-API (PDP) med systembrukerinformasjonen som finnes i Maskinporten-tokenet.
+
+**For sluttbrukersystemleverandør**
+
+Systembruker gir deg en enkel og sikker måte å opprette en bruker som kan brukes til å automatisere handlinger på vegne av dine kunder, uten at det er behov for å utveksle sertifikat eller andre hemmeligheter.
+
+**For sluttbruker**
+
+Systembruker gjør det mulig for sluttbrukersystemleverandøren din å utføre handlinger på vegne av virksomheten din på en enkel og sikker måte.
+
+## I bruk
+
+![Concept](https://docs.altinn.studio/nb/authorization/what-do-you-get/systemuser/runtime.png)
+
+1. Sluttbrukersystem ber om systembrukertoken fra Maskinporten. Forespørselen angir nødvendige scopes, klient-ID og organisasjonsnummeret til sluttbrukervirksomheten det opptrer på vegne av.
+2. Maskinporten verifiserer mot Altinn Autorisasjon at kunden har gitt sluttbrukersystemet som er knyttet mot klienten, tilgang. Gitt at det finnes gyldig systembruker, returneres Maskinportentoken med systembrukerinformasjon.
+3. SBS gjør oppslag mot tjeneste med Maskinportentokenet.
+4. Tjenesten autentiserer SBS og sjekker at tokenet inneholder nødvendige scopes for å benytte tjenesten. Deretter gjøres det oppslag mot Altinn Autorisasjon for å sjekke at systembruker har nødvendige fullmakter.
+
+## Leveranseplan
+
+Mer detaljert informasjon om leveranseplan og status finnes i [Digdirs Roadmap](https://github.com/digdir/roadmap/issues/284).
