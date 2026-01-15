@@ -7,7 +7,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "search:index": "node ./search/indexer.mjs --clone",
+    "search:index:fast": "node ./search/indexer.mjs --clone --maxFiles 50"
   },
   "dependencies": {
     "@digdir/designsystemet-react": "^1.6.1",
