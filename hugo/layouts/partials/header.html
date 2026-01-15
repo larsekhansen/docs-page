@@ -3,5 +3,26 @@
     <a class="site-brand" href="{{ "/" | relURL }}">
       <span class="ds-heading ds-heading--sm">{{ .Site.Title }}</span>
     </a>
+    <button class="site-search-trigger" type="button" data-search-open>
+      <span class="site-search-trigger__label">Søk</span>
+      <span class="site-search-trigger__kbd">Ctrl</span>
+      <span class="site-search-trigger__kbd">K</span>
+    </button>
   </div>
 </header>
+
+<div class="site-search" data-search-modal aria-hidden="true" data-search-api-base="{{ .Site.Params.searchApiBase }}">
+  <div class="site-search__backdrop" data-search-close></div>
+  <div class="site-search__dialog" role="dialog" aria-modal="true" aria-label="Søk" tabindex="-1">
+    <div class="site-search__bar">
+      <input class="site-search__input" type="search" placeholder="Søk gjennom dokumentasjonen…" autocomplete="off" data-search-input />
+      <button class="site-search__close" type="button" aria-label="Lukk" data-search-close>×</button>
+    </div>
+    <div class="site-search__results" data-search-results></div>
+    <div class="site-search__footer">
+      <span class="site-search__hint"><span class="site-search-trigger__kbd">Esc</span> for å lukke</span>
+      <span class="site-search__hint"><span class="site-search-trigger__kbd">↑</span><span class="site-search-trigger__kbd">↓</span> for å navigere</span>
+      <span class="site-search__hint"><span class="site-search-trigger__kbd">Enter</span> for å åpne</span>
+    </div>
+  </div>
+</div>

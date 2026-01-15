@@ -2,6 +2,9 @@ baseURL = 'http://localhost:1313/'
 languageCode = 'nb-no'
 title = 'Digdir Dokumentasjon'
 
+[params]
+  searchApiBase = 'http://localhost:8000'
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
