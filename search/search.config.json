@@ -1,0 +1,20 @@
+{
+  "highlight": {
+    "minTokenLength": 3
+  },
+  "ranking": {
+    "lexWeightMin": 0.2,
+    "lexWeightMax": 0.7,
+    "signals": {
+      "hasDigit": 0.25,
+      "hasSpecialChar": 0.2,
+      "hasCamelCase": 0.2,
+      "hasLongToken": 0.2,
+      "manyTokens": 0.15
+    },
+    "thresholds": {
+      "longTokenLength": 12,
+      "manyTokensCount": 3
+    }
+  }
+}
