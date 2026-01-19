@@ -166,6 +166,25 @@ function normalizeAltinnDocsUrl(filePathRel) {
   return `/${clean}`.replace(/\/$/, '') || '/';
 }
 
+function normalizePortalUrl(filePathRelUnderContent) {
+  // This repo's portal is a Hugo site under hugo/content.
+  // We normalize to Hugo-like pretty URLs (trailing slash).
+  let rel = filePathRelUnderContent.replace(/\\/g, '/');
+
+  const m = rel.match(/^(.*?)(?:\.(en|nb))?\.(md|mdx)$/i);
+  if (!m) return '/' + rel.replace(/^\/+/, '');
+
+  let base = m[1];
+  // Section/list pages
+  base = base.replace(/\/_index$/i, '');
+  // Leaf pages using index.md
+  base = base.replace(/\/index$/i, '');
+
+  const clean = base.replace(/^\/+/, '').replace(/\/+/g, '/');
+  if (!clean) return '/';
+  return `/${clean}/`;
+}
+
 async function embedBatch({ apiBase, apiKey, apiVersion, deploymentName, inputs }) {
   const url = `${apiBase.replace(/\/+$/, '')}/openai/deployments/${deploymentName}/embeddings?api-version=${encodeURIComponent(apiVersion)}`;
   const res = await fetch(url, {
@@ -221,6 +240,7 @@ async function main() {
 
   const docsRepo = getArg(args, '--repo') ?? path.join(__dirname, '.cache', 'altinn-studio-docs');
   const shouldClone = hasFlag(args, '--clone');
+  const contentRootArg = getArg(args, '--contentRoot');
   const outDir = getArg(args, '--outDir') ?? path.join(__dirname, 'index');
   const maxFiles = Number(getArg(args, '--maxFiles') ?? '0') || 0;
 
@@ -234,7 +254,15 @@ async function main() {
     throw new Error('Missing required env: api_key, api_base, api_version, embedding_deployment_name (or deployment_name)');
   }
 
-  if (shouldClone) {
+  // Decide indexing mode
+  const isAltinnMode = Boolean(shouldClone || getArg(args, '--repo')) && !contentRootArg;
+  const contentRoot = contentRootArg
+    ? path.resolve(repoRoot, contentRootArg)
+    : isAltinnMode
+      ? path.join(docsRepo, 'content')
+      : path.join(repoRoot, 'hugo', 'content');
+
+  if (shouldClone && isAltinnMode) {
     await fs.mkdir(path.dirname(docsRepo), { recursive: true });
     try {
       await fs.stat(docsRepo);
@@ -257,7 +285,7 @@ async function main() {
     'resources',
     'public',
   ]);
-  const contentRoot = path.join(docsRepo, 'content');
+
   const files = await walkFiles(contentRoot, exts, { ignoreDirs });
   const selected = maxFiles > 0 ? files.slice(0, maxFiles) : files;
 
@@ -265,13 +293,15 @@ async function main() {
   const outIndexPath = path.join(outDir, 'index.jsonl');
   const outMetaPath = path.join(outDir, 'meta.json');
 
-  const commit = gitTry(docsRepo, ['rev-parse', 'HEAD']);
+  const commit = isAltinnMode ? gitTry(docsRepo, ['rev-parse', 'HEAD']) : gitTry(repoRoot, ['rev-parse', 'HEAD']);
 
   const meta = {
     createdAt: new Date().toISOString(),
-    source: 'Altinn/altinn-studio-docs',
-    docsRepoPath: docsRepo,
-    docsRepoCommit: commit,
+    source: isAltinnMode ? 'Altinn/altinn-studio-docs' : 'portal',
+    contentRootPath: contentRoot,
+    docsRepoPath: isAltinnMode ? docsRepo : null,
+    docsRepoCommit: isAltinnMode ? commit : null,
+    portalCommit: isAltinnMode ? null : commit,
     embeddingDeployment: deploymentName,
     apiBase: apiBase,
     apiVersion: apiVersion,
@@ -324,7 +354,8 @@ async function main() {
   }
 
   for (const filePathAbs of selected) {
-    const rel = path.relative(docsRepo, filePathAbs);
+    const relToRoot = path.relative(repoRoot, filePathAbs);
+    const relToContent = path.relative(contentRoot, filePathAbs);
     const raw = await fs.readFile(filePathAbs, 'utf8');
     const normalized = stripHugoShortcodes(stripMdx(raw));
 
@@ -342,11 +373,11 @@ async function main() {
     for (let i = 0; i < chunks.length; i++) {
       const text = chunks[i].trim();
       if (!text) continue;
-      const id = `${rel}#${i}`;
-      const url = normalizeAltinnDocsUrl(rel);
+      const id = `${relToRoot}#${i}`;
+      const url = isAltinnMode ? normalizeAltinnDocsUrl(path.posix.join('content', relToContent.replace(/\\/g, '/'))) : normalizePortalUrl(relToContent);
 
       pending.push(text);
-      pendingMeta.push({ id, url, filePath: rel, title, text });
+      pendingMeta.push({ id, url, filePath: relToRoot, title, text });
       totalChunks += 1;
 
       if (pending.length >= batchSize) await flushBatch();
