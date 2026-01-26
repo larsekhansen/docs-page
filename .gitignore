@@ -19,6 +19,10 @@ node_modules/
 /search/index/
 /search/.cache/
 
+# Upstream docs sync
+/.upstream-docs/
+/.sync-state.json
+
 # Production
 /build
 /dist
