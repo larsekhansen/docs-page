@@ -7,8 +7,8 @@ body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetic
 .site-header__inner{max-width:1200px;margin:0 auto;padding:1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
 .site-brand{text-decoration:none;color:inherit}
 
-.site-search-trigger{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--ds-color-neutral-border-subtle);background:var(--ds-color-neutral-surface-default);padding:.5rem .75rem;border-radius:var(--ds-border-radius-md);cursor:pointer}
-.site-search-trigger:hover{background:var(--ds-color-neutral-surface-tinted)}
+.site-search-trigger{display:inline-flex;align-items:center;gap:.5rem}
+.site-search-trigger:hover{background:unset}
 .site-search-trigger__label{font-weight:600}
 .site-search-trigger__kbd{display:inline-flex;align-items:center;justify-content:center;min-width:1.5rem;height:1.25rem;padding:0 .25rem;border:1px solid var(--ds-color-neutral-border-subtle);border-bottom-width:2px;border-radius:6px;background:var(--ds-color-neutral-surface-default);font-size:.75rem;line-height:1}
 
@@ -16,6 +16,9 @@ body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetic
 .site-search.is-open{display:block}
 .site-search__backdrop{position:absolute;inset:0;background:rgba(0,0,0,.45)}
 .site-search__dialog{position:relative;max-width:760px;margin:7vh auto 0 auto;background:var(--ds-color-neutral-surface-default);border-radius:var(--ds-border-radius-lg);box-shadow:0 20px 60px rgba(0,0,0,.25);overflow:hidden}
+.site-search__dialog{border:0;padding:0}
+dialog.site-search__dialog{width:calc(100% - 2rem)}
+dialog.site-search__dialog::backdrop{background:rgba(0,0,0,.45)}
 .site-search__bar{display:flex;align-items:center;gap:.5rem;padding:1rem;border-bottom:1px solid var(--ds-color-neutral-border-subtle)}
 .site-search__input{flex:1;border:1px solid var(--ds-color-neutral-border-subtle);border-radius:var(--ds-border-radius-md);padding:.75rem .75rem;font-size:1rem}
 .site-search__close{border:0;background:transparent;font-size:1.5rem;line-height:1;cursor:pointer;color:inherit}
