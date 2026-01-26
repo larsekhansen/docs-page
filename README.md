@@ -1,175 +1,95 @@
-# Digdir Dokumentasjonsportal
+# Digdir Documentation Portal
 
-Felles dokumentasjonsplattform for Altinn-produkter og tjenester fra Digitaliseringsdirektoratet.
+A unified documentation portal built with Hugo, React islands, and Express search API.
 
-## Features
+## Quick Start Checklist
 
-- **Reusable produktstruktur** - Enkelt å legge til nye produkter
-- **Gjenbrukbar template** - Konsistent landingsside for alle produkter basert på Diataxis
-- **Designsystemet** - Bygget med Digdir's offisielle designsystem
-- **Responsiv** - Fungerer på mobil, tablet og desktop
-- **Tilgjengelig** - WCAG 2.1 AA-kompatibel
-- **Rask** - Bygget med Next.js for optimal ytelse
-- **Markdown-støtte** - Enkel redigering av innhold
+1. **Clone and install**
+   ```bash
+   git clone <repository-url>
+   cd docs-page
+   npm install
+   ```
 
-## Project Structure
+2. **Set up environment**
+   ```bash
+   cp .env.example .env
+   # Edit .env with your Azure OpenAI credentials
+   ```
 
-```
-/
-├── components/
-│   ├── product-landing/  # Gjenbrukbar produktlandingsside-template
-│   │   ├── ProductLandingPage.tsx
-│   │   ├── NavigationCard.tsx
-│   │   └── *.module.css
-│   ├── homepage/         # Homepage-komponenter
-│   │   ├── Homepage.tsx
-│   │   ├── ProductCard.tsx
-│   │   └── *.module.css
-│   └── layout/           # Layout-komponenter (navbar, sidebar)
-├── data/
-│   └── products.json     # Produktmetadata
-├── pages/
-│   ├── _app.tsx          # Next.js app wrapper
-│   ├── index.tsx         # Forside
-│   ├── produkter/        # Produktoversikt
-│   └── [produkt]/        # Dynamiske produktsider
-├── styles/
-│   └── globals.css       # Globale styles
-└── types/
-    └── product.ts        # TypeScript types
+3. **Build search index**
+   ```bash
+   npm run search:index
+   ```
 
-## Getting Started
+4. **Run all services**
+   ```bash
+   npm run dev
+   ```
 
-### Installation
+5. **Verify it works**
+   ```bash
+   npm run smoke-test
+   ```
 
-```bash
-# Installer avhengigheter
-npm install
+6. **Visit the site**
+   - Hugo site: http://localhost:1313
+   - Search API: http://localhost:8000/api/health
 
-# Start dev-server
-npm run dev
-```
+## What's Implemented
 
-Åpne [http://localhost:3000](http://localhost:3000) for å se resultatet.
+- ✅ Hugo static site with Designsystemet styling
+- ✅ React islands for dynamic UI (Vite + TypeScript)
+- ✅ Semantic + keyword search with highlighting
+- ✅ Basic sync from altinn-studio-docs repo
+- ✅ Hot module replacement in development
 
-### Bygg for produksjon
+## What's Missing
 
-```bash
-# Bygg prosjektet
-npm run build
+- 🚧 Multi-source content ingestion (docs.digdir.no, minid.no, etc.)
+- 🚧 Web scraping capability
+- 🚧 CI/CD pipeline for automated updates
+- 🚧 Health monitoring dashboard
 
-# Start produksjonsserver
-npm start
-```
-
-### Static export (for enkel self-hosting)
+## Development
 
 ```bash
-# Legg til i package.json scripts:
-"export": "next export"
+# Individual services
+npm run docs:dev      # Hugo dev server (localhost:1313)
+npm run search:api    # Express search API (localhost:8000)
+npm run ui:dev        # Vite dev server (localhost:5173)
 
-# Bygg statisk site
-npm run build && npm run export
+# Content management
+npm run sync:docs     # Sync from git repos
+npm run search:index  # Rebuild search index
+
+# Production
+npm run build         # Build everything
 ```
 
-Dette genererer en `/out` mappe med statiske filer som kan hostes hvor som helst.
+## Architecture
 
-## 🎨 Designsystemet
-
-Prosjektet bruker [Designsystemet](https://designsystemet.no/) - Norges offisielle designsystem fra Digdir.
-
-**Pakker:**
-- `@digdir/designsystemet-react` - React-komponenter (Card, Heading, Paragraph, etc.)
-- `@digdir/designsystemet-theme` - Design tokens (farger, spacing, typografi)
-- `@digdir/designsystemet-css` - Base-styles
-
-**Tilgjengelige komponenter:**
-- Card, Button, Heading, Paragraph
-- Accordion, Alert, Badge, Breadcrumbs
-- [Se alle komponenter](https://designsystemet.no/komponenter)
-
-## 📝 Legg til nytt produkt
-
-### 1. Oppdater `data/products.json`
-
-```json
-{
-  "id": "mitt-produkt",
-  "title": "Mitt Produkt",
-  "shortDescription": "Kort beskrivelse",
-  "description": "Lengre beskrivelse av produktet",
-  "url": "/mitt-produkt",
-  "sections": [
-    {
-      "type": "explanation",
-      "title": "Om Mitt Produkt",
-      "description": "Lær om konseptene",
-      "url": "/mitt-produkt/om",
-      "icon": "information"
-    },
-    {
-      "type": "tutorial",
-      "title": "Kom i gang",
-      "description": "Sett opp produktet",
-      "url": "/mitt-produkt/kom-i-gang",
-      "icon": "rocket",
-      "highlighted": true
-    }
-  ]
-}
+```
+Hugo (Static Site) ←→ React Islands ←→ Vite (Build Tool)
+        ↓
+Express Search API ←→ Azure OpenAI (Embeddings)
+        ↓
+Content Sources ←→ Sync Scripts ←→ CI/CD
 ```
 
-### 2. Opprett produktside
+## Documentation
 
-Opprett `/pages/mitt-produkt/index.tsx`:
+- [Handover Guide](docs/HANDOVER.md) - Complete project overview for new team
+- [Architecture](docs/ARCHITECTURE.md) - Technical design and patterns
+- [Content Sync](docs/SYNC.md) - How to add new content sources
 
-```tsx
-import { ProductLandingPage } from '@/components/product-landing/ProductLandingPage';
-import productsData from '@/data/products.json';
+## Project Status
 
-export default function MittProduktPage() {
-  const product = productsData.products.find(p => p.id === 'mitt-produkt');
-  return <ProductLandingPage product={product} />;
-}
-```
+**Ready for handover** - Core infrastructure is complete. Next team should focus on:
+1. Implementing multi-source content adapters
+2. Setting up CI/CD pipeline
+3. Adding web scraping for remaining Digdir sites
 
-Ferdig! Produktet dukker nå opp på forsiden og har egen landingsside.
+## License
 
-## 🧭 Diataxis-rammeverket
-
-Produktlandingssider følger [Diataxis](https://diataxis.fr/) dokumentasjonsrammeverk:
-
-- **Explanation** (Forklaring) - Konseptuell forståelse
-  - "Om [Produkt]", "Hva får du?"
-- **Tutorial** (Opplæring) - Læring ved å gjøre
-  - "Kom i gang"
-- **How-to** (Veiledning) - Løse spesifikke oppgaver
-  - "Guider"
-- **Reference** (Referanse) - Teknisk informasjon
-  - "Referanse", "API-dokumentasjon"
-
-## 🎯 Jobs to be Done (JTBD)
-
-Innholdsstrukturen er designet rundt brukernes behov:
-
-1. **"Jeg vil forstå hva dette er"** → Om-seksjonen
-2. **"Jeg vil komme i gang raskt"** → Kom i gang (highlighted)
-3. **"Jeg vil løse et spesifikt problem"** → Guider
-4. **"Jeg trenger teknisk referanse"** → Referanse
-
-## 📐 Design-prinsipper
-
-1. **Konsistens** - Samme struktur på tvers av alle produkter
-2. **Tilgjengelighet** - WCAG 2.1 AA standard
-3. **Ytelse** - Rask lasting, minimal JavaScript
-4. **Vedlikeholdbarhet** - Enkelt å oppdatere og utvide
-5. **Progressiv forbedring** - Fungerer uten JavaScript
-6. **Skalerbarhet** - Designet for å vokse med flere produkter
-
-## 🔗 Inspirasjon
-
-- [GOV.UK Design System](https://design-system.service.gov.uk) - Offentlig sektor, tilgjengelighetsfokus
-- [Aksel (NAV)](https://aksel.nav.no) - Norsk designsystem og dokumentasjon
-- [Designsystemet](https://designsystemet.no/) - Digdir's designsystem
-- [Microsoft Azure Docs](https://learn.microsoft.com/en-us/azure/) - Multi-produkt struktur
-- [Stripe Docs](https://docs.stripe.com) - Utvikleropplevelse
+[License information]
