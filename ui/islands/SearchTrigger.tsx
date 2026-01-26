@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from '@digdir/designsystemet-react';
 
 type Props = {
   label?: string;
@@ -6,10 +7,10 @@ type Props = {
 
 export function SearchTrigger({ label = 'Søk' }: Props) {
   return (
-    <button className="site-search-trigger" type="button" data-search-open>
+    <Button className="site-search-trigger" type="button" data-search-open>
       <span className="site-search-trigger__label">{label}</span>
       <span className="site-search-trigger__kbd">Ctrl</span>
       <span className="site-search-trigger__kbd">K</span>
-    </button>
+    </Button>
   );
 }

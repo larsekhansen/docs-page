@@ -12,6 +12,14 @@ const registry: IslandRegistry = {
 
 const mounted = new WeakMap<Element, Root>();
 
+const debugEnabled = (() => {
+  try {
+    return new URLSearchParams(window.location.search).has('debugIslands');
+  } catch {
+    return false;
+  }
+})();
+
 type IslandsDebug = {
   loaded: boolean;
   readyState: DocumentReadyState;
@@ -23,6 +31,10 @@ type IslandsDebug = {
 function ensureDebugEl(): HTMLElement {
   const existing = document.getElementById('islands-debug');
   if (existing) return existing;
+
+  if (!document.body) {
+    throw new Error('document.body not ready');
+  }
 
   const el = document.createElement('div');
   el.id = 'islands-debug';
@@ -56,10 +68,12 @@ function setDebug(patch: Partial<IslandsDebug>) {
   const next = { ...current, ...patch };
   w.ISLANDS_DEBUG = next;
 
-  try {
-    const el = ensureDebugEl();
-    el.textContent = `islands loaded=${next.loaded} readyState=${next.readyState} mountPoints=${next.mountPoints} mounted=${next.mounted}${next.lastError ? `\nerror: ${next.lastError}` : ''}`;
-  } catch {
+  if (debugEnabled) {
+    try {
+      const el = ensureDebugEl();
+      el.textContent = `islands loaded=${next.loaded} readyState=${next.readyState} mountPoints=${next.mountPoints} mounted=${next.mounted}${next.lastError ? `\nerror: ${next.lastError}` : ''}`;
+    } catch {
+    }
   }
 }
 
@@ -109,6 +123,18 @@ function mountAll() {
 }
 
 setDebug({ loaded: true });
+
+window.addEventListener('error', (e) => {
+  const err = (e as ErrorEvent).error;
+  const msg = err instanceof Error ? err.message : (e as ErrorEvent).message;
+  setDebug({ lastError: msg });
+});
+
+window.addEventListener('unhandledrejection', (e) => {
+  const reason = (e as PromiseRejectionEvent).reason;
+  const msg = reason instanceof Error ? reason.message : String(reason);
+  setDebug({ lastError: msg });
+});
 
 // Mount once
 if (document.readyState === 'loading') {
