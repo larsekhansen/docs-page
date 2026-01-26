@@ -106,6 +106,8 @@ export function SearchDialog({ searchApiBase = '' }: Props) {
       if (!inDialog) return;
 
       const inInput = inputRef.current ? activeEl === inputRef.current : false;
+      const focusedItem = activeEl instanceof HTMLElement ? activeEl.closest<HTMLElement>('[data-search-item]') : null;
+      const maxIndex = Math.max(0, results.length - 1);
 
       if (key === 'escape') {
         e.preventDefault();
@@ -114,15 +116,33 @@ export function SearchDialog({ searchApiBase = '' }: Props) {
       }
 
       if (key === 'arrowdown') {
-        if (!inInput) return;
+        if (!inInput && !focusedItem) return;
+        if (results.length === 0) return;
         e.preventDefault();
-        setActiveIndex((i) => Math.min(Math.max(0, i + 1), Math.max(0, results.length - 1)));
+        if (focusedItem) {
+          const current = Number.parseInt(focusedItem.getAttribute('data-search-index') ?? '', 10);
+          const next = Number.isFinite(current) ? Math.min(current + 1, maxIndex) : 0;
+          const el = dialogEl?.querySelector<HTMLElement>(`#search-option-${next}`);
+          if (el) el.focus();
+          setActiveIndex(next);
+          return;
+        }
+        setActiveIndex((i) => Math.min(Math.max(0, i + 1), maxIndex));
         return;
       }
 
       if (key === 'arrowup') {
-        if (!inInput) return;
+        if (!inInput && !focusedItem) return;
+        if (results.length === 0) return;
         e.preventDefault();
+        if (focusedItem) {
+          const current = Number.parseInt(focusedItem.getAttribute('data-search-index') ?? '', 10);
+          const next = Number.isFinite(current) ? Math.max(current - 1, 0) : 0;
+          const el = dialogEl?.querySelector<HTMLElement>(`#search-option-${next}`);
+          if (el) el.focus();
+          setActiveIndex(next);
+          return;
+        }
         setActiveIndex((i) => Math.max(0, i - 1));
         return;
       }
@@ -283,6 +303,7 @@ export function SearchDialog({ searchApiBase = '' }: Props) {
                         className={`site-search__item${isActive ? ' is-active' : ''}`}
                         href={item.url}
                         data-search-item
+                        data-search-index={globalIdx}
                         role="option"
                         aria-selected={isActive ? 'true' : 'false'}
                         onMouseEnter={() => setActiveIndex(globalIdx)}
