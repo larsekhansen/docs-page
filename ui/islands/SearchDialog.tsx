@@ -100,6 +100,13 @@ export function SearchDialog({ searchApiBase = '' }: Props) {
 
       if (!open) return;
 
+      const activeEl = document.activeElement;
+      const dialogEl = dialogRef.current;
+      const inDialog = dialogEl && activeEl instanceof HTMLElement ? dialogEl.contains(activeEl) : false;
+      if (!inDialog) return;
+
+      const inInput = inputRef.current ? activeEl === inputRef.current : false;
+
       if (key === 'escape') {
         e.preventDefault();
         closeDialog();
@@ -107,31 +114,45 @@ export function SearchDialog({ searchApiBase = '' }: Props) {
       }
 
       if (key === 'arrowdown') {
+        if (!inInput) return;
         e.preventDefault();
         setActiveIndex((i) => Math.min(Math.max(0, i + 1), Math.max(0, results.length - 1)));
         return;
       }
 
       if (key === 'arrowup') {
+        if (!inInput) return;
         e.preventDefault();
         setActiveIndex((i) => Math.max(0, i - 1));
         return;
       }
 
       if (key === 'enter') {
+        if (!inInput) return;
         const idx = activeIndex >= 0 ? activeIndex : 0;
         const r = results[idx];
-        if (r?.url) {
-          e.preventDefault();
-          closeDialog();
-          window.location.assign(r.url);
-        }
+        if (!r?.url) return;
+        e.preventDefault();
+        closeDialog();
+        window.location.assign(r.url);
       }
     };
 
     document.addEventListener('keydown', onKeydown);
     return () => document.removeEventListener('keydown', onKeydown);
   }, [activeIndex, closeDialog, open, openDialog, results]);
+
+  React.useEffect(() => {
+    if (!open) return;
+    if (activeIndex < 0) return;
+    const el = document.getElementById(`search-option-${activeIndex}`);
+    if (el) {
+      try {
+        el.scrollIntoView({ block: 'nearest' });
+      } catch {
+      }
+    }
+  }, [activeIndex, open]);
 
   React.useEffect(() => {
     if (!open) {
@@ -201,13 +222,13 @@ export function SearchDialog({ searchApiBase = '' }: Props) {
   }, [open, query, searchApiBase]);
 
   const grouped = React.useMemo(() => {
-    const byGroup = new Map<string, SearchResult[]>();
-    for (const r of results) {
+    const byGroup = new Map<string, Array<{ r: SearchResult; i: number }>>();
+    results.forEach((r, i) => {
       const key = groupLabelFromUrl(r.url);
       const cur = byGroup.get(key) ?? [];
-      cur.push(r);
+      cur.push({ r, i });
       byGroup.set(key, cur);
-    }
+    });
     return Array.from(byGroup.entries());
   }, [results]);
 
@@ -229,6 +250,7 @@ export function SearchDialog({ searchApiBase = '' }: Props) {
             type="search"
             placeholder="Søk gjennom dokumentasjonen…"
             aria-label="Søk gjennom dokumentasjonen…"
+            aria-activedescendant={activeIndex >= 0 ? `search-option-${activeIndex}` : undefined}
             autoComplete="off"
             value={query}
             onChange={(e) => setQuery((e.target as HTMLInputElement).value)}
@@ -245,25 +267,26 @@ export function SearchDialog({ searchApiBase = '' }: Props) {
           {status === 'error' && <div className="site-search__empty">Noe gikk galt ved søk.</div>}
 
           {status === 'results' && (
-            <div role="listbox">
+            <div role="listbox" aria-label="Søkeresultater">
               {grouped.map(([group, items]) => (
                 <div key={group}>
                   <div className="site-search__section">{group} ({items.length})</div>
-                  {items.map((item, idx) => {
-                    const globalIdx = results.indexOf(item);
+                  {items.map(({ r: item, i: globalIdx }) => {
                     const isActive = globalIdx === activeIndex;
                     const title = item.title || item.url;
                     const snippet = item.snippet || '';
 
                     return (
                       <a
-                        key={item.url + idx}
+                        id={`search-option-${globalIdx}`}
+                        key={item.url + globalIdx}
                         className={`site-search__item${isActive ? ' is-active' : ''}`}
                         href={item.url}
                         data-search-item
                         role="option"
                         aria-selected={isActive ? 'true' : 'false'}
                         onMouseEnter={() => setActiveIndex(globalIdx)}
+                        onFocus={() => setActiveIndex(globalIdx)}
                         onClick={(e) => {
                           e.preventDefault();
                           closeDialog();
