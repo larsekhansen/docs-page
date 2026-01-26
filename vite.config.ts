@@ -3,12 +3,15 @@ import react from '@vitejs/plugin-react';
 import path from 'node:path';
 import type { ConfigEnv } from 'vite';
 
-export default defineConfig((env: ConfigEnv) => {
-  const { command } = env;
+export default defineConfig(({ command }) => {
   const isDev = command === 'serve';
 
   return {
-    plugins: [react()],
+    plugins: [
+      react({
+        jsxImportSource: 'react',
+      })
+    ],
     server: {
       port: 5173,
       strictPort: true,
