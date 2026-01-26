@@ -13,4 +13,11 @@
 <link rel="stylesheet" href="{{ "vendor/designsystemet.css" | relURL }}" />
 <link rel="stylesheet" href="{{ "css/site.css" | relURL }}" />
 
+{{ if .Site.IsServer }}
+  <script type="module" src="http://localhost:5173/@vite/client"></script>
+  <script type="module" src="http://localhost:5173/ui/main.tsx"></script>
+{{ else }}
+  <script type="module" src="{{ "ui/islands.js" | relURL }}"></script>
+{{ end }}
+
 <script defer src="{{ "js/search.js" | relURL }}"></script>
