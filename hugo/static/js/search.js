@@ -105,19 +105,22 @@
     const dialog = qs(modal, '.site-search__dialog');
     const input = qs(modal, '[data-search-input]');
     const resultsEl = qs(modal, '[data-search-results]');
-    const openButtons = qsa(document, '[data-search-open]');
     const closeButtons = qsa(modal, '[data-search-close]');
 
     if (!dialog || !input || !resultsEl) return;
 
     // Update trigger keys if present
-    const triggerKbdEls = qsa(document, '.site-search-trigger__kbd');
-    if (triggerKbdEls.length === 2) {
-      const s = getShortcutKey();
-      const parts = s.split(' ');
-      triggerKbdEls[0].textContent = parts[0];
-      triggerKbdEls[1].textContent = parts[1];
+    function updateTriggerKbdLabels() {
+      const triggerKbdEls = qsa(document, '.site-search-trigger__kbd');
+      if (triggerKbdEls.length === 2) {
+        const s = getShortcutKey();
+        const parts = s.split(' ');
+        triggerKbdEls[0].textContent = parts[0];
+        triggerKbdEls[1].textContent = parts[1];
+      }
     }
+
+    updateTriggerKbdLabels();
 
     let isOpen = false;
     let activeIndex = -1;
@@ -129,6 +132,7 @@
       modal.setAttribute('aria-hidden', next ? 'false' : 'true');
 
       if (next) {
+        updateTriggerKbdLabels();
         resultsEl.innerHTML = createEmptyState();
         activeIndex = -1;
         window.setTimeout(() => {
@@ -261,15 +265,18 @@
       search(input.value);
     }
 
-    function openFromButton() {
-      setOpen(true);
-    }
-
     function closeFromButton() {
       setOpen(false);
     }
 
-    openButtons.forEach((b) => b.addEventListener('click', openFromButton));
+    document.addEventListener('click', (e) => {
+      const target = e.target;
+      if (!(target instanceof HTMLElement)) return;
+      if (target.closest('[data-search-open]')) {
+        e.preventDefault();
+        setOpen(true);
+      }
+    });
     closeButtons.forEach((b) => b.addEventListener('click', closeFromButton));
     input.addEventListener('input', onInput);
 

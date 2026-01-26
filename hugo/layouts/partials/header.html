@@ -3,11 +3,7 @@
     <a class="site-brand" href="{{ "/" | relURL }}">
       <span class="ds-heading ds-heading--sm">{{ .Site.Title }}</span>
     </a>
-    <button class="site-search-trigger" type="button" data-search-open>
-      <span class="site-search-trigger__label">Søk</span>
-      <span class="site-search-trigger__kbd">Ctrl</span>
-      <span class="site-search-trigger__kbd">K</span>
-    </button>
+    <div data-react-island="SearchTrigger" data-props='{"label":"Søk"}'></div>
   </div>
 </header>
 
