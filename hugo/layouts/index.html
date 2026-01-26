@@ -7,14 +7,16 @@
 
     <div class="card-grid">
       {{ range .Site.Sections.ByTitle }}
-        <a class="ds-card card" href="{{ .RelPermalink }}">
-          <div class="ds-card__content">
-            <h2 class="ds-heading ds-heading--md">{{ .Title }}</h2>
-            {{ with .Params.description }}
-              <p class="ds-paragraph">{{ . }}</p>
-            {{ end }}
-          </div>
-        </a>
+        {{ if not .Params.hideInNav }}
+          <a class="ds-card card" href="{{ .RelPermalink }}">
+            <div class="ds-card__content">
+              <h2 class="ds-heading ds-heading--md">{{ .Title }}</h2>
+              {{ with .Params.description }}
+                <p class="ds-paragraph">{{ . }}</p>
+              {{ end }}
+            </div>
+          </a>
+        {{ end }}
       {{ end }}
     </div>
   </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import { SearchTrigger } from './islands/SearchTrigger';
+import { DsPlayground } from './islands/DsPlayground';
 
 type IslandComponent = (props: any) => React.ReactElement;
 
@@ -8,6 +9,7 @@ type IslandRegistry = Record<string, IslandComponent>;
 
 const registry: IslandRegistry = {
   SearchTrigger,
+  DsPlayground,
 };
 
 const mounted = new WeakMap<Element, Root>();

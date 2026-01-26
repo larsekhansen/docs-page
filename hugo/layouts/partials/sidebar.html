@@ -19,15 +19,17 @@
   {{ $isActive := eq $active $p.RelPermalink }}
   {{ $isAncestor := strings.HasPrefix $active $p.RelPermalink }}
 
-  <li class="sidebar__item">
-    <a class="sidebar__link{{ if $isActive }} is-active{{ end }}" href="{{ $p.RelPermalink }}">{{ $p.Title }}</a>
+  {{ if not $p.Params.hideInNav }}
+    <li class="sidebar__item">
+      <a class="sidebar__link{{ if $isActive }} is-active{{ end }}" href="{{ $p.RelPermalink }}">{{ $p.Title }}</a>
 
-    {{ if and $p.Pages (or $isActive $isAncestor) }}
-      <ul class="sidebar__sublist">
-        {{ range $p.Pages.ByWeight }}
-          {{ template "sidebar-item" dict "p" . "active" $active }}
-        {{ end }}
-      </ul>
-    {{ end }}
-  </li>
+      {{ if and $p.Pages (or $isActive $isAncestor) }}
+        <ul class="sidebar__sublist">
+          {{ range $p.Pages.ByWeight }}
+            {{ template "sidebar-item" dict "p" . "active" $active }}
+          {{ end }}
+        </ul>
+      {{ end }}
+    </li>
+  {{ end }}
 {{ end }}

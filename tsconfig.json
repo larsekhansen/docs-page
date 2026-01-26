@@ -13,6 +13,6 @@
     "resolveJsonModule": true,
     "types": ["node"]
   },
-  "include": ["search/**/*.ts", "ui/**/*.ts", "ui/**/*.tsx", "vite.config.ts"],
+  "include": ["search/**/*.ts", "ui/**/*.ts", "ui/**/*.tsx", "vite.config.ts", "playwright.config.ts", "e2e/**/*.ts"],
   "exclude": ["node_modules"]
 }

@@ -17,7 +17,10 @@
     "build": "npm run ui:build && npm run docs:build",
     "build:dev": "npm run ui:build && hugo --source hugo --buildDrafts --buildFuture",
     "clean": "rm -rf hugo/public hugo/resources .hugo_build.lock hugo/static/ui .upstream-docs",
-    "dev": "concurrently \"npm run search:api\" \"npm run ui:dev\" \"npm run docs:dev\""
+    "dev": "concurrently \"npm run search:api\" \"npm run ui:dev\" \"npm run docs:dev\"",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:report": "playwright show-report"
   },
   "dependencies": {
     "@digdir/designsystemet-react": "^1.6.1",
@@ -32,6 +35,7 @@
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "@vitejs/plugin-react": "^4.2.1",
+    "@playwright/test": "^1.41.2",
     "concurrently": "^9.2.1",
     "tsx": "^4.19.2",
     "typescript": "^5.0.0",
