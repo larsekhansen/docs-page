@@ -1,0 +1,126 @@
+{
+  "$schema": "./schemas/sources.schema.json",
+  "sources": [
+    {
+      "id": "altinn-studio",
+      "name": "Altinn Studio Documentation",
+      "type": "git",
+      "enabled": true,
+      "config": {
+        "url": "https://github.com/altinn/altinn-studio-docs.git",
+        "branch": "main",
+        "contentPath": "Docs",
+        "sparseCheckout": ["Docs"],
+        "hugo": {
+          "contentDir": "altinn",
+          "frontmatter": {
+            "title": "fromFilename",
+            "weight": "fromPath"
+          }
+        }
+      }
+    },
+    {
+      "id": "docs-digdir",
+      "name": "Digdir Documentation Portal",
+      "type": "scrape",
+      "enabled": false,
+      "config": {
+        "baseUrl": "https://docs.digdir.no",
+        "startPaths": ["/"],
+        "excludePatterns": ["/api/", "/admin/"],
+        "selectors": {
+          "content": "main article",
+          "title": "h1",
+          "navigation": "nav[role='navigation']",
+          "breadcrumbs": "nav[aria-label='breadcrumb']"
+        },
+        "hugo": {
+          "contentDir": "digdir",
+          "frontmatter": {
+            "title": "extract:h1",
+            "description": "meta:description",
+            "source": "docs.digdir.no"
+          }
+        }
+      }
+    },
+    {
+      "id": "minid",
+      "name": "MinID Documentation",
+      "type": "scrape",
+      "enabled": false,
+      "config": {
+        "baseUrl": "https://minid.no",
+        "startPaths": ["/docs/", "/help/"],
+        "excludePatterns": ["/api/", "/internal/"],
+        "selectors": {
+          "content": ".content-area",
+          "title": "h1",
+          "lastUpdated": ".last-updated"
+        },
+        "hugo": {
+          "contentDir": "minid",
+          "frontmatter": {
+            "title": "extract:h1",
+            "category": "minid"
+          }
+        }
+      }
+    },
+    {
+      "id": "idporten",
+      "name": "ID-porten Documentation",
+      "type": "api",
+      "enabled": false,
+      "config": {
+        "apiUrl": "https://api.digdir.no/docs/idporten",
+        "auth": {
+          "type": "bearer",
+          "token": "${IDPORTEN_API_TOKEN}"
+        },
+        "endpoints": {
+          "content": "/pages",
+          "media": "/media"
+        },
+        "hugo": {
+          "contentDir": "idporten",
+          "frontmatter": {
+            "title": "from:title",
+            "version": "from:version"
+          }
+        }
+      }
+    },
+    {
+      "id": "uutilsynet",
+      "name": "Utdanningsutvalget for Yrkesfaglig Sikkerhet",
+      "type": "scrape",
+      "enabled": false,
+      "config": {
+        "baseUrl": "https://uutilsynet.no",
+        "startPaths": ["/veiledninger/", "/skjemaer/"],
+        "excludePatterns": ["/wp-admin/", "/login"],
+        "selectors": {
+          "content": ".entry-content",
+          "title": "h1",
+          "metadata": ".post-meta"
+        },
+        "hugo": {
+          "contentDir": "uus",
+          "frontmatter": {
+            "title": "extract:h1",
+            "type": "guideline"
+          }
+        }
+      }
+    }
+  ],
+  "global": {
+    "outputDir": "hugo/content",
+    "indexAfterSync": true,
+    "maxConcurrentSyncs": 3,
+    "retryAttempts": 3,
+    "retryDelay": 5000
+  }
+}
